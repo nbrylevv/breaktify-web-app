@@ -61,13 +61,13 @@
 </script>
 
 <div class="{`bt-settings ${$$props.class}`}">
+  <div on:click={playSound}>
+    TEST SOUND
+    <div id="sound"></div>
+  </div>
+  <h1 class="bt-settings__header">Breaktify!</h1>
+  
   <form class="bt-settings__form">
-    <div on:click={playSound}>
-      TEST SOUND
-      <div id="sound"></div>
-    </div>
-    <h1 class="bt-settings__header">Breaktify!</h1>
-
     <h2 class="bt-settings__sub-header">Настройки уведомлений</h2>
     <div class="bt-settings__row">
       <label class="bt-settings__label">Интервал (мин)</label>

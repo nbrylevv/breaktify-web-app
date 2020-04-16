@@ -144,27 +144,25 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	padding-right: 300px;
 
 	&__side {
 		display: inline-flex;
 		align-items: center;
-		padding: 20px;
+		height: 100%;
 
 		&_left {
+			width: 100%;
 			justify-content: center;
 		}
 
 		&_right {
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
+			flex: 1 0 380px;
 			flex-direction: column;
 			justify-content: space-between;
-			width: 300px;
-			margin-left: 20px;
+			width: 380px;
+			padding: 20px;
 			background: #fff;
+			border-left: 1px solid #e8e8e8;
 			overflow-x: hidden;
 			overflow-y: auto;
 		}
