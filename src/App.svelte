@@ -3,6 +3,7 @@
 	import Settings from './views/Settings.svelte';
 	import Links from './views/Links.svelte';
 	import NoBrowserSupport from './views/NoBrowserSupport.svelte';
+	import AllowNotifications from './views/AllowNotifications.svelte';
 	import Button from './components/Button.svelte';
 
 	import {
@@ -98,8 +99,8 @@
 
 	function notificate() {
 		notifications.create('Breaktify!', {
-			body: `${settings.notificationMessage}\n Отдохните следующие ${settings.breakTime} секунд`,
-			image: './images/palm.png',
+			body: `${settings.notificationMessage}\nОтдохните следующие ${settings.breakTime} секунд`,
+			// image: './images/palm.png', // app-logo
 			icon: './images/palm.png',
 		});
 	}
@@ -112,16 +113,12 @@
 		{#if !notifications.hasBrowserSupport }
 			<NoBrowserSupport />
 		{:else if !notifications.hasPermission }
-			Необходимо разрешить уведомления
-			<Button on:click={() => notifications.requestPermission()}
-							class="bt-button_blue">
-				Разрешить
-			</Button>
+			<AllowNotifications />
 		{:else}
-			<div class="bt-layout__side bt-layout__side_right">
+			<div class="bt-layout__side bt-layout__side_left">
 				<Panel class="bt-app__panel" />
 			</div>
-			<div class="bt-layout__side bt-layout__side_left">
+			<div class="bt-layout__side bt-layout__side_right">
 				<Settings class="bt-app__settings" />
 				<Links class="bt-app__links" />
 			</div>
@@ -147,6 +144,7 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	padding-right: 300px;
 
 	&__side {
 		display: inline-flex;
@@ -154,15 +152,21 @@
 		padding: 20px;
 
 		&_left {
+			justify-content: center;
+		}
+
+		&_right {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
 			flex-direction: column;
 			justify-content: space-between;
 			width: 300px;
 			margin-left: 20px;
 			background: #fff;
-		}
-
-		&_right {
-			justify-content: center;
+			overflow-x: hidden;
+			overflow-y: auto;
 		}
 	}
 }

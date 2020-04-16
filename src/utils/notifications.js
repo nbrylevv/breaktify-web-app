@@ -12,11 +12,14 @@ export class Notifications {
     return Notification.permission === 'granted';
   }
 
+  get permissionStatus() {
+    return Notification.permission;
+  }
+
   requestPermission(callback) {
-    Notification.requestPermission().then(() => {
-      console.log('')
+    Notification.requestPermission().then((permission) => {
       if (callback && typeof callback === 'function') {
-        callback();
+        callback(permission);
       }
     });
   }

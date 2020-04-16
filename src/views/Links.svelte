@@ -4,7 +4,7 @@
 
 <ul class="{`bt-links ${$$props.class}`}">
   <li class="bt-links__item">
-    <Link href="http://github.com/nbrylevv">
+    <Link href="http://github.com/nbrylevv/breaktify-web-app">
       GitHub
     </Link>
   </li>

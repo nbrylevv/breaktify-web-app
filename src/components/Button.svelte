@@ -11,7 +11,7 @@
   border: none;
   cursor: pointer;
   border-radius: 3px;
-  transition: all 0.125s;
+  transition: color 0.125s, background 0.125s;
   appearance: none;
 
   &_blue {

@@ -62,18 +62,17 @@
     height: 128px;
     pointer-events: none;
     transform: rotate(0);
-
-    &_timer {
-      background: url('/images/timer.png');
-      background-size: cover;
-    }
+    transition: opacity 0.125s linear;
+    opacity: 0;
 
     &_palm {
       background: url('/images/palm.png');
       background-size: cover;
+      opacity: 1;
     }
 
     &_sandtime {
+      opacity: 1;
       animation: spin 3s ease-in-out infinite;
       background: url('/images/sandtime.png');
       background-size: cover;
