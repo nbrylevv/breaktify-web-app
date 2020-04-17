@@ -18,14 +18,16 @@
   min-width: 100px;
   padding: 0 10px;
   font-size: 16px;
-  border: 1px solid #d0d0d0;
+  color: var(--control-color);
+  background: var(--control-background);
+  border: 1px solid var(--control-border-color);
   border-radius: 3px;
   transition: all 0.125s;
   -webkit-appearance: none;
 
   &:hover,
   &:focus {
-    border-color: #a1a1a1;
+    border-color: var(--control-border-color_hover);
   }
 
   &::placeholder {

@@ -36,17 +36,13 @@
     display: block;
     width: 100%;
     height: 100%;
-    color: #fff;
-    background: #7897f5;
+    color: var(--action-button-color);
+    background: var(--action-button-background);
     border-radius: 0;
     transition: all 0.125s;
 
     &:hover {
-      background: #6083ee;
-    }
-
-    &:active {
-      background: #4762b3;
+      background: var(--action-button-background_hover);
     }
 
     &:focus {
@@ -60,8 +56,8 @@
   width: 70px;
   height: 120px;
   margin: auto;
-  border-left: 20px solid #fff;
-  border-right: 20px solid #fff;
+  border-left: 20px solid currentColor;
+  border-right: 20px solid currentColor;
 }
 
 .bt-start-icon {
@@ -71,7 +67,7 @@
   margin: 0 auto;
   transform: translateX(50px);
   border: 70px solid transparent;
-  border-left-color: #fff;
+  border-left-color: currentColor;
 }
 
 @keyframes spin {

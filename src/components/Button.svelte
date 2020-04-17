@@ -1,4 +1,10 @@
-<button class="{`bt-button ${$$props.class}`}" on:click>
+<script>
+  export let type;
+</script>
+
+<button class="{`bt-button ${$$props.class}`}"
+        type="{type}"
+        on:click>
   <slot />
 </button>
 

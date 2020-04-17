@@ -1,0 +1,27 @@
+{
+  "notification_settings": {
+    "caption": "Настройки уведомлений",
+    "interval_label": "Интервал (мин)",
+    "break_label": "Перерыв (сек)",
+    "message_label": "Сообщение",
+    "sound_label": "Звуковое уведомление"
+  },
+  "app_settings": {
+    "caption": "Настройки приложения",
+    "language_label": "Язык",
+    "theme_label": "Тема оформления"
+  },
+  "constants": {
+    "sounds": {
+      "no_sound": "Без звука"
+    },
+    "themes": {
+      "dark": "Темная",
+      "light": "Светлая"
+    },
+    "languages": {
+      "russian": "Русский",
+      "english": "English"
+    }
+  }
+}
