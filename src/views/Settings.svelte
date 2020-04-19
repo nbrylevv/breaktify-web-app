@@ -108,9 +108,6 @@
 </script>
 
 <div class="{`bt-settings ${$$props.class}`}">
-  <div id="sound"></div>
-  <h1 class="bt-settings__header">Breaktify!</h1>
-
   <form class="bt-settings__form">
     <h2 class="bt-settings__sub-header">{$_('notification_settings.caption')}</h2>
     <div class="bt-settings__row">
@@ -198,11 +195,6 @@
 
   }
 
-  &__header {
-    margin-top: 0;
-    font-size: 42px;
-  }
-
   &__sub-header {
     display: block;
     font-size: 20px;
@@ -242,8 +234,13 @@
       color: var(--text-color);
 
       .bt-start-icon {
-        border-width: 8px;
+        display: block;
+        width: 0;
+        height: 0;
+        margin: 0 auto;
         transform: translateX(5px);
+        border: 8px solid transparent;
+        border-left-color: currentColor;
       }
     }
 

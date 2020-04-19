@@ -1,5 +1,6 @@
 <script>
   import Button from '../components/Button.svelte';
+  import PlayStopIcon from '../components/PlayStopIcon.svelte';
 
   import {
     STATES,
@@ -14,37 +15,32 @@
   let currentState;
   let intervalTime;
 
-  let countdownStartedAt = NaN;
-  let startDiffInterval = NaN;
+  let countdownStartedAt;
+  let startDiffInterval;
   let fillHeight = 0;
   let countdown = 0;
 
-  $: remainingTime = countdown > 1 ? `${Math.round(countdown)} минут` : `${Math.round(countdown * 60)} секунд`;
+  $: remainingTimeValue = countdown > 1 ? Math.round(countdown) : Math.round(countdown * 60);
+  $: remainingTimeLabel = countdown > 1 ? 'минут' : 'секунд';
 
   const stateListener = state.subscribe(value => {
     currentState = value;
 
-    console.log('stateListener', value);
     switch (value) {
       case STATES.action:
+        countdownStartedAt = new Date().getTime();
         fillHeight = 0;
         startTimeDiff();
         break;
       case STATES.stopped:
-        fillHeight = 0;
         stopTimeDiff();
         resetCountdown();
+        fillHeight = 0;
         break;
       case STATES.break:
-        fillHeight = 100;
         stopTimeDiff();
+        fillHeight = 100;
         break;
-    }
-    if (value === STATES.action) {
-      countdownStartedAt = new Date().getTime();
-      startTimeDiff();
-    } else {
-      stopTimeDiff();
     }
   });
   const intervalTimeListener = storeIntervalTime.subscribe(value => {
@@ -57,9 +53,7 @@
 
   function startTimeDiff() {
     updateFillHeight();
-    startDiffInterval = setInterval(() => {
-      updateFillHeight();
-    }, 1000);
+    startDiffInterval = setInterval(updateFillHeight, 1000);
   }
 
   function updateFillHeight() {
@@ -71,7 +65,7 @@
   }
 
   function stopTimeDiff() {
-     clearInterval(startDiffInterval);
+    clearInterval(startDiffInterval);
   }
 
   function resetCountdown() {
@@ -82,18 +76,17 @@
 <div class="{`bt-panel ${$$props.class}`}">
   <Button class="bt-panel__button"
           on:click={onButtonClick}>
-    {#if currentState === STATES.stopped }
-      <span class="bt-start-icon" />
-      <div class="bt-panel__remaining-time">
-        Начать
-      </div>
-    {:else}
-      <span class="bt-pause-icon" />
-      <div class="bt-panel__remaining-time">
+    <PlayStopIcon value="{currentState === STATES.stopped}" />
+    <div class="bt-panel__remaining-time">
+      {#if currentState === STATES.stopped }
+        Начать отсчет
+      {:else}
         До следующего перерыва:
-        <span>{remainingTime}</span>
-      </div>
-    {/if}
+        <span class="bt-panel__remaining-time-value">
+          {remainingTimeValue} {remainingTimeLabel}
+        </span>
+      {/if}
+    </div>
   </Button>
   <div class="bt-panel__countdown-line"
        style="{`height: ${fillHeight}%`}" />
@@ -126,12 +119,14 @@
   }
 
   &__remaining-time {
+    height: 56px;
     margin-top: 10px;
+    font-size: 20px;
+  }
+
+  &__remaining-time-value {
+    display: block;
     font-size: 24px;
-    
-    span {
-      display: block;
-    }
   }
 
   &__countdown-line {
@@ -143,32 +138,6 @@
     background: var(--countdown-background);
     transition: height 0.125s linear;
     pointer-events: none;
-  }
-}
-
-.bt-pause-icon {
-  display: block;
-  width: 70px;
-  height: 120px;
-  margin: auto;
-  border-left: 20px solid currentColor;
-  border-right: 20px solid currentColor;
-}
-
-.bt-start-icon {
-  display: block;
-  width: 0;
-  height: 0;
-  margin: 0 auto;
-  transform: translateX(50px);
-  border: 70px solid transparent;
-  border-left-color: currentColor;
-}
-
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform:rotate(360deg);
   }
 }
 </style>

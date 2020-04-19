@@ -196,6 +196,7 @@
 				<Panel class="bt-app__panel" />
 			</div>
 			<div class="bt-layout__side bt-layout__side_right">
+				<div class="bt-app__header">Breaktify!</div>
 				<Settings class="bt-app__settings"
 									on:run-example={runExample} />
 				<Links class="bt-app__links" />
@@ -219,6 +220,11 @@
 		margin-top: 20px;
 	}
 
+	&__header {
+		margin-top: 0;
+		font-size: 42px;
+	}
+
 	&__sound {
 		position: absolute;
 		top: 0;
@@ -238,7 +244,6 @@
 
 	&__side {
 		display: inline-flex;
-		align-items: center;
 		height: 100%;
 
 		&_left {
@@ -249,7 +254,6 @@
 		&_right {
 			flex: 1 0 380px;
 			flex-direction: column;
-			justify-content: space-between;
 			width: 380px;
 			padding: 20px;
 			background: var(--panel-background);
