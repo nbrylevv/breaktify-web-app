@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
   import { _ } from 'svelte-i18n';
 
   import {
@@ -23,6 +24,8 @@
     theme as storeTheme,
     language as storeLanguage,
   } from '../stores/app-settings';
+
+  const dispatch = createEventDispatcher();
 
   let intervalTime;
   let breakTime;
@@ -94,6 +97,11 @@
     lsHelper.setObject('app-settings', 'theme', value);
   }
 
+  function dispatchRunExample(entity) {
+    console.log('dispatchRunExample', entity);
+    dispatch('run-example', { entity });
+  }
+
   function playSound(){
     document.getElementById('bt-sound-audio').play();
   }
@@ -143,10 +151,17 @@
         </Select>
         <Button class="bt-settings__button bt-settings__button_sound-sample"
                 type="button"
-                on:click={playSound}>
+                on:click={() => dispatchRunExample('sound')}>
           <span class="bt-start-icon" />
         </Button>
       </div>
+    </div>
+    <div class="bt-settings__row">
+      <Button class="bt-settings__button bt-settings__button_notification-sample"
+              type="button"
+              on:click={() => dispatchRunExample('notification')}>
+        Пробное уведомление
+      </Button>
     </div>
   </form>
 
@@ -225,13 +240,15 @@
       margin-left: 10px;
       padding: 0 10px;
       color: var(--text-color);
-      background: var(--control-background);
-      border: 1px solid var(--control-border-color);
 
       .bt-start-icon {
         border-width: 8px;
         transform: translateX(5px);
       }
+    }
+
+    &_notification-sample {
+      width: 100%;
     }
   }
 }

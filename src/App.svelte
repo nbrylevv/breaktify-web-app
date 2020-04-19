@@ -50,7 +50,6 @@
 		state.set(STATES.stopped);
 	});
 	const soundListener = storeSound.subscribe(value => {
-		console.log(isMounted, value);
 		if (isMounted) {
 			applySound(value);
 		}
@@ -124,7 +123,7 @@
  		if (settings.sound) {
  			playSound();
 		}
- 		
+
 		notifications.create('Breaktify!', {
 			body: `${settings.message}\nОтдохните следующие ${settings.breakTime} секунд`,
 			// image: './images/palm.png', // app-logo
@@ -163,7 +162,25 @@
 	}
 
 	function playSound() {
-		document.getElementById('bt-sound-audio').play();
+ 		const audio = document.getElementById('bt-sound-audio');
+
+ 		audio.currentTime = 0;
+		audio.play();
+	}
+
+	function runExample(event) {
+ 		const { entity } = event.detail;
+
+ 		switch (entity) {
+			case 'sound':
+				playSound();
+				break;
+			case 'notification':
+				notificate();
+				break;
+			default:
+				break;
+		}
 	}
 
 </script>
@@ -179,7 +196,8 @@
 				<Panel class="bt-app__panel" />
 			</div>
 			<div class="bt-layout__side bt-layout__side_right">
-				<Settings class="bt-app__settings" />
+				<Settings class="bt-app__settings"
+									on:run-example={runExample} />
 				<Links class="bt-app__links" />
 			</div>
 		{/if}
