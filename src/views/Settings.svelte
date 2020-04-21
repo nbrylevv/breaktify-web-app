@@ -157,7 +157,7 @@
       <Button class="bt-settings__button bt-settings__button_notification-sample"
               type="button"
               on:click={() => dispatchRunExample('notification')}>
-        Пробное уведомление
+        {$_('notification_settings.show_notification')}
       </Button>
     </div>
   </form>

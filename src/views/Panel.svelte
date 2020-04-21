@@ -1,4 +1,6 @@
 <script>
+  import { _ } from 'svelte-i18n';
+
   import Button from '../components/Button.svelte';
   import PlayStopIcon from '../components/PlayStopIcon.svelte';
 
@@ -21,7 +23,7 @@
   let countdown = 0;
 
   $: remainingTimeValue = countdown > 1 ? Math.round(countdown) : Math.round(countdown * 60);
-  $: remainingTimeLabel = countdown > 1 ? 'минут' : 'секунд';
+  $: remainingTimeLabel = countdown > 1 ? 'panel.in_minutes' : 'panel.in_seconds';
 
   const stateListener = state.subscribe(value => {
     currentState = value;
@@ -79,11 +81,11 @@
     <PlayStopIcon value="{currentState === STATES.stopped}" />
     <div class="bt-panel__remaining-time">
       {#if currentState === STATES.stopped }
-        Начать отсчет
+        {$_('panel.start_timer')}
       {:else}
-        До следующего перерыва:
+        {$_('panel.next_break_in')}:
         <span class="bt-panel__remaining-time-value">
-          {remainingTimeValue} {remainingTimeLabel}
+          {remainingTimeValue} {$_(remainingTimeLabel)}
         </span>
       {/if}
     </div>

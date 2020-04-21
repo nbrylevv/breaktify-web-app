@@ -4,12 +4,19 @@
     "interval_label": "Интервал (мин)",
     "break_label": "Перерыв (сек)",
     "message_label": "Сообщение",
-    "sound_label": "Звуковое уведомление"
+    "sound_label": "Звуковое уведомление",
+    "show_notification": "Показать уведомление"
   },
   "app_settings": {
     "caption": "Настройки приложения",
     "language_label": "Язык",
     "theme_label": "Тема оформления"
+  },
+  "panel": {
+    "start_timer": "Начать отсчет",
+    "next_break_in": "Следующий перерыв через",
+    "in_minutes": "минут",
+    "in_seconds": "секунд"
   },
   "constants": {
     "sounds": {
@@ -23,5 +30,14 @@
       "russian": "Русский",
       "english": "English"
     }
+  },
+  "no_browser_support": {
+    "your_browser_doesnt_support_notification": "Ваш браузер не поддерживает уведомления",
+    "update_and_come_back": "Обновитесь и обязательно возвращайтесь"
+  },
+  "allow_notifications": {
+    "to_use_app_you_need_allow_notifications": "Для работы приложения необходимо разрешить уведомления",
+    "you_need_allow_notifications": "Необходимо разрешить уведомления",
+    "allow": "Разрешить"
   }
 }

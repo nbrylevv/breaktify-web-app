@@ -1,4 +1,6 @@
 <script>
+  import { _ } from 'svelte-i18n';
+
   import Button from '../components/Button.svelte';
 
   import {
@@ -17,17 +19,17 @@
 <div class="bt-allow-notify">
   {#if notifications.permissionStatus === 'denied' }
     <div class="bt-allow-notify__arrow">
-      <span class="bt-allow-notify__arrow-message">Разрешить</span>
+      <span class="bt-allow-notify__arrow-message">{$_('allow_notifications.allow')}</span>
     </div>
   {/if}
   <div class="bt-allow-notify__message">
     {#if notifications.permissionStatus === 'denied' }
-      Для работы приложения необходимо разрешить уведомления
+      {$_('allow_notifications.to_use_app_you_need_allow_notifications')}
     {:else}
-      Необходимо разрешить уведомления
+      {$_('allow_notifications.you_need_allow_notifications')}
       <Button on:click={() => notifications.requestPermission(requestPermissionCallback)}
               class="bt-button_blue bt-allow-notify__button">
-        Разрешить
+        {$_('allow_notifications.allow')}
       </Button>
     {/if}
   </div>
