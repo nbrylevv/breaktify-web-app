@@ -1,4 +1,8 @@
+<script>
+  import { _ } from 'svelte-i18n';
+</script>
+
 <div>
-  Ваш браузер не поддерживает уведомления.<br>
-  Обновитесь и обязательно возвращайтесь :)
+  {$_('no_browser_support.your_browser_doesnt_support_notification')}.<br>
+  {$_('no_browser_support.update_and_come_back')} :)
 </div>

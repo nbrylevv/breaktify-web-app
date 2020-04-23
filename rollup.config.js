@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
+import json from 'rollup-plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -22,7 +23,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/app.js'
 	},
 	plugins: [
 		svelte({
@@ -31,9 +32,18 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write('public/build/bundle.css');
+				css.write('public/app.css');
 			},
 			preprocess,
+		}),
+
+		json({
+			exclude: ['node_modules'],
+			preferConst: true,
+			// ignores indent and generates the smallest code
+			compact: true, // Default: false
+			// generate a named export for every property of the JSON object
+			namedExports: true // Default: true
 		}),
 
 		// If you have external dependencies installed from

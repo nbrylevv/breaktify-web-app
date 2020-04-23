@@ -12,17 +12,19 @@ export class Notifications {
     return Notification.permission === 'granted';
   }
 
+  get permissionStatus() {
+    return Notification.permission;
+  }
+
   requestPermission(callback) {
-    Notification.requestPermission().then(() => {
-      console.log('')
+    Notification.requestPermission().then((permission) => {
       if (callback && typeof callback === 'function') {
-        callback();
+        callback(permission);
       }
     });
   }
 
   create(text, options) {
-    console.log('create', text);
     if (this.hasPermission) {
       this.close();
       this.currentNotification = new Notification(text, options || void 0);

@@ -1,0 +1,44 @@
+{
+  "notification_settings": {
+    "caption": "Notification settings",
+    "interval_label": "Interval (min)",
+    "break_label": "Break (sec)",
+    "message_label": "Message",
+    "sound_label": "Sound",
+    "show_notification": "Show notification"
+  },
+  "app_settings": {
+    "caption": "Application settings",
+    "language_label": "Language",
+    "theme_label": "Theme"
+  },
+  "panel": {
+    "start_timer": "Start timer",
+    "next_break_in": "Next break in",
+    "break_ends_in": "Break ends in",
+    "in_minutes": "minutes",
+    "in_seconds": "seconds"
+  },
+  "constants": {
+    "sounds": {
+      "no_sound": "No sound"
+    },
+    "themes": {
+      "dark": "Dark",
+      "light": "Light"
+    },
+    "languages": {
+      "russian": "Русский",
+      "english": "English"
+    }
+  },
+  "no_browser_support": {
+    "your_browser_doesnt_support_notification": "Your browser does not support notifications",
+    "update_and_come_back": "Please, update it and come back"
+  },
+  "allow_notifications": {
+    "to_use_app_you_need_allow_notifications": "To use this web app you need allow notifications",
+    "you_need_allow_notifications": "You need allow notifications",
+    "allow": "Разрешить"
+  }
+}
