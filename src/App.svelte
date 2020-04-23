@@ -21,9 +21,9 @@
 	import {
 		Notifications,
 	} from './utils/notifications';
-	import {
-		DocumentFavicon,
-	} from './utils/document-favicon';
+	// import {
+	// 	DocumentFavicon,
+	// } from './utils/document-favicon';
 
 	import {
 		STATES,
@@ -36,7 +36,7 @@
 	} from './consts/sounds';
 
 	const notifications = new Notifications();
-	const documentFavicon = new DocumentFavicon();
+	// const documentFavicon = new DocumentFavicon();
 
 	let isMounted = false;
 
@@ -65,18 +65,18 @@
 
  		switch (value) {
 			case STATES.action:
-				documentFavicon.update(FAVICONS[value]);
+				// documentFavicon.update(FAVICONS[value]);
 				if (!actionTimerId) {
 					startActionTimer();
 				}
 				break;
 			case STATES.stopped:
-				documentFavicon.update(FAVICONS[value]);
+				// documentFavicon.update(FAVICONS[value]);
 				stopActionTimer();
 				stopBreakTimer();
 				break;
 			case STATES.break:
-				documentFavicon.update(FAVICONS[value]);
+				// documentFavicon.update(FAVICONS[value]);
 				break;
 			default:
 				break;
@@ -125,9 +125,9 @@
 		}
 
 		notifications.create('Breaktify!', {
-			body: `${settings.message}\nОтдохните следующие ${settings.breakTime} секунд`,
+			body: `${settings.message || ''}`,
 			// image: './images/palm.png', // app-logo
-			icon: './images/palm.png',
+			icon: './images/favicon.png',
 		});
 	}
 
@@ -210,11 +210,12 @@
 
 <style global lang="scss">
 @import "./assets/scss/app";
+@import "./assets/scss/mixins";
 
 .bt-app {
 	display: flex;
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 
 	.bt-app__links {
 		margin-top: 20px;
@@ -234,10 +235,15 @@
 		opacity: 0;
 		pointer-events: none;
 	}
+
+	@include desktop {
+		height: 100vh;
+	}
 }
 
 .bt-layout {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
@@ -247,19 +253,34 @@
 		height: 100%;
 
 		&_left {
-			width: 100%;
 			justify-content: center;
+			width: 100%;
+			min-height: 300px;
 		}
 
 		&_right {
-			flex: 1 0 380px;
 			flex-direction: column;
-			width: 380px;
+			width: 100%;
 			padding: 20px;
 			background: var(--panel-background);
 			border-left: 1px solid var(--panel-border-color);
-			overflow-x: hidden;
-			overflow-y: auto;
+		}
+	}
+
+	@include desktop {
+		flex-direction: row;
+
+		&__side {
+			&_left {
+				min-height: 0;
+			}
+
+			&_right {
+				flex: 1 0 380px;
+				width: 380px;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
 		}
 	}
 }

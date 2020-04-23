@@ -15,6 +15,7 @@
   "panel": {
     "start_timer": "Start timer",
     "next_break_in": "Next break in",
+    "break_ends_in": "Break ends in",
     "in_minutes": "minutes",
     "in_seconds": "seconds"
   },

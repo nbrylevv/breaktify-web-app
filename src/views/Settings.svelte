@@ -98,7 +98,6 @@
   }
 
   function dispatchRunExample(entity) {
-    console.log('dispatchRunExample', entity);
     dispatch('run-example', { entity });
   }
 

@@ -15,6 +15,7 @@
   "panel": {
     "start_timer": "Начать отсчет",
     "next_break_in": "Следующий перерыв через",
+    "break_ends_in": "Перерыв закончится через",
     "in_minutes": "минут",
     "in_seconds": "секунд"
   },

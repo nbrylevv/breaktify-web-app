@@ -23,7 +23,7 @@
   border: 1px solid var(--control-border-color);
   border-radius: 3px;
   transition: all 0.125s;
-  -webkit-appearance: none;
+  appearance: none;
 
   &:hover,
   &:focus {

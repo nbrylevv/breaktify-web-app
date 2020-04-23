@@ -25,7 +25,6 @@ export class Notifications {
   }
 
   create(text, options) {
-    console.log('create', text);
     if (this.hasPermission) {
       this.close();
       this.currentNotification = new Notification(text, options || void 0);
