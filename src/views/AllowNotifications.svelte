@@ -43,7 +43,7 @@
     left: 104px;
     width: 102px;
     height: 120px;
-    background: url('/images/notification-arrow-top.png');
+    background: url('images/notification-arrow-top.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
