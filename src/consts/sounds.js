@@ -1,4 +1,4 @@
-export const SOUNDS_PATH = '/sounds'
+export const SOUNDS_PATH = 'sounds'
 
 export const SOUNDS = [
   {
