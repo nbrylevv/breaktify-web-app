@@ -164,10 +164,8 @@
 	function playSound() {
  		const audio = document.getElementById('bt-sound-audio');
 
-		if (audio) {
-			audio.currentTime = 0;
-			audio.play();
-		}
+ 		audio.currentTime = 0;
+		audio.play();
 	}
 
 	function runExample(event) {
