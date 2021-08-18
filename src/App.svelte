@@ -1,5 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
+	import {
+		onMount,
+	} from 'svelte';
 
 	import Panel from './views/Panel.svelte';
 	import Settings from './views/Settings.svelte';
